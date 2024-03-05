@@ -1,0 +1,21 @@
+_id: req_wrk_767951973ff24966957d359ac05b85748e9faeb5
+type: Request
+parentId: fld_wrk_767951973ff24966957d359ac05b857496584038
+modified: 1709570538830
+created: 1709570519369
+url: "{{ base_url }}/orders/cancel/{{ id }}"
+name: cancelar pedido específico
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1709570519369
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

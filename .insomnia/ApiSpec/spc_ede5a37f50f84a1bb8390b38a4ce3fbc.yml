@@ -1,0 +1,144 @@
+_id: spc_ede5a37f50f84a1bb8390b38a4ce3fbc
+type: ApiSpec
+parentId: wrk_767951973ff24966957d359ac05b8574
+modified: 1709570538904
+created: 1709512718131
+fileName: Adoorei
+contents: |+
+  openapi: 3.0.0
+  info:
+    title: Api e-commerce loja ABC
+    description: Api do e-commerce da loja ABC
+    version: 1.0.0
+    
+  servers:
+    - url: http://127.0.0.1/api
+    
+  tags:
+    - name: products
+      description: listagem de produtos
+      url: /products
+    
+    - name: orders
+      description: criação de pedidos
+      url: /orders
+
+  paths:
+
+
+  #  Products
+    /products:
+      get:
+        tags:
+          - products
+        summary: Listar produtos disponíveis
+        responses:
+          '200':
+            description: Lista de produtos disponíveis
+          '404':
+            description: Rota não encontrada
+                                
+  # Orders          
+    /orders:
+      get:
+        tags:
+          - orders
+        summary: Listar pedidos disponíveis
+        parameters:
+          - in: query
+            name: status
+            schema:
+              type: string
+              enum:
+                  - CART
+                  - PENDING
+                  - PAID
+                  - CANCELED
+                  - REJECTED
+        responses:
+          '200':
+            description: Lista de pedidos disponíveis
+          '404':
+            description: Rota não encontrada
+            
+    /orders/create:
+      post:
+        tags:
+          - orders
+        summary: criar pedidos
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        price:
+                          type: number
+                        amount:
+                          type: integer
+                        description:
+                          type: string
+        responses:
+          '200':
+            description: Lista de produtos disponíveis
+          '400':
+            description: Resquest inválida
+          '404':
+            description: Rota não encontrada
+          '422':
+            description: Validation exception
+            
+    /orders/{id}:
+      get:
+        tags:
+          - orders
+        summary: mostrar pedidos específico
+        parameters:
+          - name: id
+            in: path
+            required: true
+            description: ID do produto a ser buscado
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: pedidos solicitado
+          '400':
+            description: id inválida
+          '404':
+            description: pedido não encontrada
+            
+    /orders/cancel/{id}:
+      delete:
+        tags:
+          - orders
+        summary: cancelar pedido específico
+        parameters:
+          - name: id
+            in: path
+            required: true
+            description: ID do produto a ser buscado
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: pedidos cancelado
+          '400':
+            description: id inválida
+          '404':
+            description: pedido não encontrada
+          
+
+contentType: yaml

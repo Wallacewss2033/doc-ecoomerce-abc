@@ -1,0 +1,10 @@
+_id: fld_wrk_767951973ff24966957d359ac05b8574fbdc4f23
+type: RequestGroup
+parentId: wrk_767951973ff24966957d359ac05b8574
+modified: 1709570538869
+created: 1709570519704
+name: products
+description: listagem de produtos
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1709570519704
